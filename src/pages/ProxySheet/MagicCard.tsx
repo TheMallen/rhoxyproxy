@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as styles from './MagicCard.scss';
 
 type ManaColor  = 'red' | 'blue' | 'green' | 'white' | 'black';
 type SuperType = 'artifact' | 'creature' | 'land' |
@@ -6,40 +7,42 @@ type SuperType = 'artifact' | 'creature' | 'land' |
 
 export interface Props {
   name: string;
-  manaCost: string;
-  colors: ManaColor[];
+  manaCost?: string;
+  colors?: ManaColor[];
   types: SuperType[];
   subtypes: string[];
-  text: string;
-  power: string;
-  loyalty: string;
-  toughness: string;
-  illustrator: string;
+  text?: string;
+  power?: string;
+  loyalty?: string;
+  toughness?: string;
+  illustrator?: string;
 }
 
 export default class MagicCard extends React.Component<Props, {}> {
   render() {
-     const {name, manaCost, text, illustrator} = this.props;
-     const footerStats = this.footerStats();
-     const colorClass = this.colorClass();
-     const typeline = this.typeline();
+    const {name, manaCost, text, illustrator} = this.props;
+    const footerStats = this.footerStats();
+    const colorClass = this.colorClass();
+    const typeline = this.typeline();
 
-     return (
-      <div className={'card card--' + colorClass}>
-        <div className="card__header">
-          <span className="card__header__title">
+    const cardClass = `${styles.Card} ${colorClass}`;
+
+    return (
+      <div className={cardClass}>
+        <div className={styles.Header}>
+          <span className={styles.Title}>
             {name}
           </span>
-          <span className="card__header__cost">
+          <span className={styles.HeaderCost}>
             {manaCost}
           </span>
         </div>
-        <div className="card__art" />
+        <div className={styles.Art} />
         {typeline}
-        <div className="card__text">
+        <div className={styles.Text}>
           {text}
         </div>
-        <div className="card__footer">
+        <div className={styles.Footer}>
           <div>{illustrator}</div>
           {footerStats}
         </div>
@@ -48,54 +51,71 @@ export default class MagicCard extends React.Component<Props, {}> {
   }
 
   private footerStats() {
-    let { power, toughness, loyalty } = this.props;
+    const {power, toughness, loyalty} = this.props;
 
     if (this.hasPower() && this.hasToughness()) {
-      return (<div className="card__pt-box">{power}/{toughness}</div>);
+      return (<div className={styles.PTBox}>{power}/{toughness}</div>);
     }
 
     if (this.hasLoyalty()) {
-      return (<div className="card__loyalty">{loyalty}</div>);
+      return (<div className={styles.Loyalty}>{loyalty}</div>);
     }
 
     return '';
   }
 
   private colorClass() {
-    let colors = this.props.colors || [];
+    const colors = this.props.colors || [];
     if (colors.length > 1) {
-      return 'gold';
+      return styles.colorGold;
     } else {
-      return colors[0] || 'colorless';
+      return colorForName(colors[0]);
     }
   }
 
   private hasPower() {
-    let power = this.props.power;
+    const power = this.props.power;
     return power && power !== '0';
   }
 
   private hasToughness() {
-    let toughness = this.props.toughness;
+    const toughness = this.props.toughness;
     return toughness && toughness !== '0';
   }
 
   private hasLoyalty() {
-    let loyalty = this.props.loyalty;
+    const loyalty = this.props.loyalty;
     return loyalty && loyalty !== '0';
   }
 
   private typeline() {
-    let {types, subtypes} = this.props;
-    let subtypeArray = flatten(subtypes);
+    const {types, subtypes} = this.props;
+    const subtypeArray = flatten(subtypes);
 
     return (
-      <div className="card__type-line">
+      <div className={styles.Typeline}>
         {flatten([types]).join(' ')}
         { subtypeArray && subtypeArray.length > 0 ?
           (' - ' + subtypeArray.join(' ')) : '' }
       </div>
     );
+  }
+}
+
+function colorForName(name: string) {
+  switch (name) {
+    case 'red':
+      return styles.colorRed;
+    case 'blue':
+      return styles.colorBlue;
+    case 'green':
+      return styles.colorGreen;
+    case 'white':
+      return styles.colorWhite;
+    case 'black':
+      return styles.colorBlack;
+    default:
+      return '';
   }
 }
 

@@ -1,0 +1,84 @@
+$card-padding: .1cm;
+$red: #e74c3c;
+$blue: #3498db;
+$green: #2ecc71;
+$white: #f1c40f;
+$black: #8e44ad;
+$gold: #a67e22;
+$colorless: #7f8c8d;
+
+.CardSheet {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Card {
+  font-size: 12px;
+  width: 6.3cm;
+  height: 8.8cm;
+  border: 4px solid $colorless;
+  border-radius: 3px;
+  padding: $card-padding;
+}
+
+@mixin card-color($color) {
+  border-color: $color;
+  & > div {
+    border-color: $color;
+  }
+}
+
+.colorRed {
+  @include card-color($red);
+}
+.colorBlack {
+  @include card-color($black);
+}
+.colorBlue {
+  @include card-color($blue);
+}
+.colorWhite {
+  @include card-color($white);
+}
+.colorGreen {
+  @include card-color($green);
+}
+.colorGold {
+  @include card-color($gold);
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  padding: $card-padding;
+  margin: $card-padding;
+  border: 1px solid gray;
+}
+
+.Art {
+  border: 1px solid gray;
+  padding: $card-padding;
+  margin: $card-padding;
+  height: 2.2cm;
+}
+
+.Typeline {
+  border: 1px solid gray;
+  padding: $card-padding;
+  margin: $card-padding;
+}
+
+.Text {
+  border: 1px solid gray;
+  padding: $card-padding;
+  margin: $card-padding;
+  height: 3.5cm;
+  font-size: 10px;
+}
+
+.Footer {
+  display: flex;
+  justify-content: space-between;
+  padding: $card-padding;
+  margin: $card-padding;
+}
