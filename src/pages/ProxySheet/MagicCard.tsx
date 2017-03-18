@@ -47,7 +47,7 @@ export default class MagicCard extends React.Component<Props, {}> {
     );
   }
 
-  footerStats() {
+  private footerStats() {
     let { power, toughness, loyalty } = this.props;
 
     if (this.hasPower() && this.hasToughness()) {
@@ -61,7 +61,7 @@ export default class MagicCard extends React.Component<Props, {}> {
     return '';
   }
 
-  colorClass() {
+  private colorClass() {
     let colors = this.props.colors || [];
     if (colors.length > 1) {
       return 'gold';
@@ -70,22 +70,22 @@ export default class MagicCard extends React.Component<Props, {}> {
     }
   }
 
-  hasPower() {
+  private hasPower() {
     let power = this.props.power;
     return power && power !== '0';
   }
 
-  hasToughness() {
+  private hasToughness() {
     let toughness = this.props.toughness;
     return toughness && toughness !== '0';
   }
 
-  hasLoyalty() {
+  private hasLoyalty() {
     let loyalty = this.props.loyalty;
     return loyalty && loyalty !== '0';
   }
 
-  typeline() {
+  private typeline() {
     let {types, subtypes} = this.props;
     let subtypeArray = flatten(subtypes);
 
