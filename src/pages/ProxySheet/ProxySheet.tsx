@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MagicCard from './MagicCard';
+import MagicCard from './components/MagicCard';
 
 interface Props {
   children?: React.ReactNode;
