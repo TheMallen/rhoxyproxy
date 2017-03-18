@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import * as styles from './MagicCard.scss';
 
 type ManaColor  = 'red' | 'blue' | 'green' | 'white' | 'black';
@@ -39,9 +40,10 @@ export default class MagicCard extends React.Component<Props, {}> {
         </div>
         <div className={styles.Art} />
         {typeline}
-        <div className={styles.Text}>
-          {text}
-        </div>
+        <div
+          className={styles.Text}
+          dangerouslySetInnerHTML={{__html: text || ''}}
+        />
         <div className={styles.Footer}>
           <div>{illustrator}</div>
           {footerStats}
