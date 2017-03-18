@@ -1,23 +1,48 @@
 @import 'foundation/colors.scss';
 
-.AppLogo {
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
-
-.AppHeader {
-  text-align: center;
-  background-color: $brand;
-  padding: 20px;
-  color: $background;
-}
-
-.AppIntro {
-  text-align: center;
-  font-size: large;
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.Header {
+  text-align: center;
+  background-color: $brand;
+  padding: 20px;
+  color: $light;
+}
+
+.Intro {
+  text-align: center;
+  font-size: large;
+}
+
+.Content {
+  flex: 1;
+  padding-bottom:20px;
+}
+
+.Footer {
+  color: $light;
+  padding: 40px;
+  text-align: center;
+  background-color: $footer;
+}
+
+.FooterIcon {
+  position: relative;
+  top: 5px;
+  width: 30px;
+  height: 20px;
 }
