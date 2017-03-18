@@ -1,5 +1,9 @@
 ## TODO
-[ ] port card to use css modules
-[ ] test card
+[x] port card to use css modules
+[x] test card
 [ ] render card sheet
-[ ] start search box
+[ ] print media query
+[ ] pull page of cards from api
+[ ] pull cards from route
+[ ] decklist box
+[ ] search dropdown
