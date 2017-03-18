@@ -77,17 +77,17 @@ export default class MagicCard extends React.Component<Props, {}> {
 
   private hasPower() {
     const power = this.props.power;
-    return power && power !== '0';
+    return Boolean(power);
   }
 
   private hasToughness() {
     const toughness = this.props.toughness;
-    return toughness && toughness !== '0';
+    return Boolean(toughness);
   }
 
   private hasLoyalty() {
     const loyalty = this.props.loyalty;
-    return loyalty && loyalty !== '0';
+    return Boolean(loyalty);
   }
 
   private typeline() {
