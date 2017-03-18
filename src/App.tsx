@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.scss';
+import * as styles from './App.scss';
 
 import {Router, Route, browserHistory} from 'react-router';
 import Home from './pages/Home';
@@ -10,14 +10,14 @@ const logo = require('./logo.svg');
 class App extends React.Component<null, null> {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <div className={styles.App}>
+        <div className={styles.AppHeader}>
+          <img src={logo} className={styles.AppLogo} alt="logo" />
           <h1>Rhoxy Proxy</h1>
         </div>
 
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
+        <p className={styles.AppIntro}>
+          Proxies a rhino could love.
         </p>
 
         <Router history={browserHistory}>
