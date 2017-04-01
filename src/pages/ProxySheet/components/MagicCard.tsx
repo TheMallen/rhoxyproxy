@@ -8,7 +8,7 @@ type SuperType = 'artifact' | 'creature' | 'land' |
 
 export interface Props {
   name: string;
-  manaCost?: string;
+  cost?: string;
   colors?: ManaColor[];
   types: SuperType[];
   subtypes: string[];
@@ -21,7 +21,7 @@ export interface Props {
 
 export default class MagicCard extends React.Component<Props, {}> {
   render() {
-    const {name, manaCost, text, illustrator} = this.props;
+    const {name, cost, text, illustrator} = this.props;
     const footerStats = this.footerStats();
     const colorClass = this.colorClass();
     const typeline = this.typeline();
@@ -35,7 +35,7 @@ export default class MagicCard extends React.Component<Props, {}> {
             {name}
           </span>
           <span className={styles.HeaderCost}>
-            {manaCost}
+            {cost}
           </span>
         </div>
         <div className={styles.Art} />

@@ -1,0 +1,13 @@
+$spacing-unit: 1.6rem;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div, span {
+  box-sizing: border-box;
+}
+
+@import 'foundation/colors';
+@import 'foundation/typography';

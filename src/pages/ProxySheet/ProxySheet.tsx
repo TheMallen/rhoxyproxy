@@ -1,12 +1,13 @@
 import * as React from 'react';
 import {CardSheet, MagicCardProps} from './components';
+import * as DeckBrew from '../../utilities/deckbrew-api-client';
 
 const mockData: MagicCardProps[] = [
   {
     name: 'Jace, Wallet Unbound',
     power: '0',
     toughness: '2',
-    manaCost: '1U',
+    cost: '1U',
     types: ['creature'],
     text: 'pay 200 dollars: win the game',
     subtypes: ['human', 'wizard'],
@@ -16,7 +17,7 @@ const mockData: MagicCardProps[] = [
     name: 'Derpzilek, Herper of Derp',
     power: '12',
     toughness: '12',
-    manaCost: '354CC',
+    cost: '354CC',
     types: ['creature'],
     text: 'When derpzilek derps, draw a card <br> Fear or some shit',
     subtypes: ['eldrazi', 'titan'],
@@ -24,7 +25,7 @@ const mockData: MagicCardProps[] = [
   },
   {
     name: 'Chandra, Cat Whisperer',
-    manaCost: '2RR',
+    cost: '2RR',
     types: ['planeswalker'],
     text: 'She is on fire and cats still like her, not sure what I am doing wrong...',
     subtypes: ['chandra'],
@@ -33,7 +34,7 @@ const mockData: MagicCardProps[] = [
   },
   {
     name: 'Gideon "The Meat" Jura',
-    manaCost: '2WW',
+    cost: '2WW',
     types: ['planeswalker'],
     text: '+1 Gideon punches you <br /> -1 Gideon kicks you <br> -5 Gideon sexes you',
     subtypes: ['gideon'],
@@ -46,8 +47,25 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export default class ProxySheet extends React.Component<Props, {}> {
+interface State {
+  cards: MagicCardProps[];
+}
+
+export default class ProxySheet extends React.Component<Props, State> {
+  state = {
+    cards: mockData,
+  };
+
+  componentDidMount() {
+    DeckBrew
+      .query({})
+      .then((cards: MagicCardProps[]) => {
+        this.setState({cards});
+      });
+
+}
   render() {
-    return <CardSheet cards={mockData} />;
+    const {cards} = this.state;
+    return <CardSheet cards={cards} />;
   }
 }

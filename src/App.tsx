@@ -32,7 +32,7 @@ class App extends React.Component<null, null> {
           </Router>
         </main>
         <footer className={styles.Footer}>
-          <p >Made with
+          <p>Made with
             <img className={styles.FooterIcon} src={heart} alt="React" /> and
             <img className={styles.FooterIcon} src={logo} alt="React" />
           </p>
