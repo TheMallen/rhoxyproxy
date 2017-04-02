@@ -1,5 +1,5 @@
-@import 'foundation/colors.scss';
-@import 'foundation/print.scss';
+@import 'foundation/colors';
+@import 'foundation/print';
 
 .App {
   display: flex;
@@ -22,11 +22,15 @@
   background-color: $brand;
   padding: 20px;
   color: $light;
+
+  @include hide-for-print;
 }
 
 .Intro {
   text-align: center;
   font-size: large;
+
+  @include hide-for-print;
 }
 
 .Content {
@@ -39,6 +43,8 @@
   padding: 40px;
   text-align: center;
   background-color: $footer;
+
+  @include hide-for-print;
 }
 
 .FooterIcon {
