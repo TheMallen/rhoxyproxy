@@ -38,9 +38,8 @@ export default class MagicCard extends React.Component<Props, {}> {
             {cost}
           </span>
         </div>
-        <div className={styles.Art} />
         {typeline}
-        <div
+        <pre
           className={styles.Text}
           dangerouslySetInnerHTML={{__html: text || ''}}
         />

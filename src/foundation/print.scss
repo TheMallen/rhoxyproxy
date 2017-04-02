@@ -1,0 +1,11 @@
+@mixin print-styles {
+  @media print {
+    @content;
+  }
+}
+
+@mixin hide-for-print {
+  @media print {
+    display: none;
+  }
+}
