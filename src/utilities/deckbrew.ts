@@ -3,9 +3,10 @@ import {dictionaryAsQuery, ParamDictionary} from './location';
 
 const API_ROOT = 'https://api.deckbrew.com/mtg/cards';
 
-interface Params {
+export interface Params {
   multiverseId?: number | number[];
   m?: number | number[];
+  id?: string | string[];
   type?: string | string[];
   subtype?: string | string[];
   supertype?: string | string[];
@@ -25,7 +26,7 @@ export function query(params: Params) {
     .then((response) => response.json() as Promise<MagicCard[]>);
 }
 
-export function autocomplete(query: string) {
+export function cardByName(query: string) {
   return fetch(`${API_ROOT}/typeahead?q=${query}`)
     .then((response) => response.json() as Promise<MagicCard[]>);
 }

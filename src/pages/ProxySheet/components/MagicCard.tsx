@@ -8,6 +8,11 @@ type SuperType = 'artifact' | 'creature' | 'land' |
 
 export interface Props {
   name: string;
+  id: string;
+  multiverseId: string;
+  editions: [{
+    multiverse_id: number;
+  }];
   cost?: string;
   colors?: ManaColor[];
   types: SuperType[];
